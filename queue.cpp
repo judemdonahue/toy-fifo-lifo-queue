@@ -15,6 +15,32 @@ Queue::~Queue() {
     // clear();
 }
 
+int Queue::peek() {
+    int outVal = 0;
+
+    return outVal;
+}
+
+int Queue::count() {
+    int count = 0;
+
+    return count;
+}
+
+bool Queue::exists(int id) {
+    bool exists = false;
+
+    return exists;
+}
+
+int Queue::find(int id) {
+    bool found = false;
+
+    return found;
+}
+
+
+
 bool Queue::push(int id, string &info) {
     bool pushed = false;
 
@@ -69,6 +95,10 @@ bool Queue::pull(Data &handler) {
     }
 
     return (handler.id != -1);
+}
+
+void Queue::clear() {
+
 }
 
 void Queue::printQueue() {
