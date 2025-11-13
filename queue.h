@@ -7,6 +7,21 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
+#include <string>
+using std::string;
+#include <iostream>
+
+struct Data {
+    int id;
+    string information;
+};
+
+struct Node {
+    Data data;
+    Node* prev;
+    Node* next;
+};
+
 class Queue {
 
 public:
