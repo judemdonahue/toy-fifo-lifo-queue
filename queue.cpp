@@ -47,7 +47,7 @@ bool Queue::exists(int id) {
     bool exists = false;
     Node* current = head;
 
-    while (current->data.id != id) {
+    while (current) {
         if (current->data.id == id) {
             exists = true;
         }
