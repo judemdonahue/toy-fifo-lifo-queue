@@ -52,8 +52,6 @@ int main () {
         buffer[BUFFERSIZE - 1] = '\0';
         strs[i] = buffer;
     }
-    ids[testdatasize-2] = ids[testdatasize-3];
-    strs[testdatasize-2] = "known duplicate";
     ids[testdatasize-1] = - 1;
     strs[testdatasize-1] = "known bad";
     
@@ -67,20 +65,80 @@ int main () {
     std::cout << "Creating FIFO Queue..." << std::endl;
     bool fifo = true;
     Queue queueFifo(fifo);
+    Data test;
     std::cout << "FIFO Queue created." << std::endl;
 
     /************************************************
-    ******** INITIALIZATION TEST ********************
+    ******** EMPTY FIFO QUEUE TESTING ********************
     ************************************************/
-    std::cout << "\n<==INITIALIZATION TEST==>" << std::endl;
+    std::cout << "\n<==EMPTY FIFO QUEUE TESTING==>" << std::endl;
     std::cout << "the queue should be empty..." <<  std::endl;
     queueFifo.printQueue();
     if (queueFifo.count() == 0) {
-        std::cout << "PASS. hashtable had " << queueFifo.count() << " entries upon creation." << std::endl;
+        std::cout << "PASS. queue had " << queueFifo.count() << " entries upon creation." << std::endl;
     } else {
-        std::cout << "FAIL. hashtable was not empty." << std::endl;
+        std::cout << "FAIL. queue was not empty." << std::endl;
+    }
+    std::cout << std::endl;
+
+    std::cout << "attempting to pull from empty queue (FIFO)..." << std::endl;
+    if (!queueFifo.pull(test)) {
+        std::cout << "PASS. pull() safely failed and returned -1 (expected)." << std::endl;
+    } else {
+        std::cout << "FAIL. something went wrong (unexpected)." << std::endl;
+    }
+    std::cout << std::endl;
+
+    std::cout << "attempting to peek from empty queue (FIFO)..." << std::endl;
+    if (queueFifo.peek() == -1) {
+        std::cout << "PASS. peek() safely failed and returned: " << queueFifo.peek() << " (expected)." << std::endl;
+    } else {
+        std::cout << "FAIL. something went wrong (unexpected)." << std::endl;
+    }
+    std::cout << std::endl;
+
+    int randInt = rand() % MAXID - 1;
+    std::cout << "attempting to see if a random ID: " << randInt << " exists in queue (FIFO)..." << std::endl;
+    if (!queueFifo.exists(randInt)) {
+        std::cout << "PASS. exists() safely failed (expected)." << std::endl;
+    } else {
+        std::cout << "FAIL. something went wrong (unexpected)." << std::endl;
+    }
+    std::cout << std::endl;
+
+    randInt = rand() % MAXID - 1;
+    std::cout << "attempting to see if a random ID: " << (randInt) << " can be found with a returnable position in queue (FIFO)..." << std::endl;
+    if (queueFifo.find(randInt) == -1) {
+        std::cout << "PASS. find() safely failed and returned: " << queueFifo.find(randInt) << " (expected)." << std::endl;
+    } else {
+        std::cout << "FAIL. something went wrong (unexpected)." << std::endl;
+    }
+    std::cout << std::endl;
+
+    std::cout << "attempting to push test data to empty queue (FIFO)..." << std::endl;
+    for (int i = 0; i < testdatasize; i++) {
+        queueFifo.push(ids[i], strs[i]);
     }
 
+    if (queueFifo.count() == testdatasize - 1) {
+        std::cout << "PASS. all good data was pushed into the queue. (expected)" << std::endl;
+    } else {
+        std::cout << "FAIL. not everything was pushed. (unexpected)" << std::endl;
+    }
+    std::cout << std::endl;
+    
+    std::cout << "Printing Queue..." << std::endl;
+    queueFifo.printQueue();
+    std::cout << std::endl;
+    
+    std::cout << "Clearing Queue..." << std::endl;
+    queueFifo.clear();
+    std::cout << "there are " << queueFifo.count() << " entries in the queue." << std::endl;
+    std::cout << std::endl;
+
+
+
+    
 
 
     return 0;
