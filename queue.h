@@ -61,8 +61,9 @@ private:
     /**********************
     * Attributes
     **********************/
-   Node* head;
-   Node* tail;
+    bool isFifo;
+    Node* head;
+    Node* tail;
 };
 
 #endif /* QUEUE_H */
