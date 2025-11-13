@@ -50,6 +50,7 @@ public:
     /**********************
     * Printing
     **********************/
+    void printQueue();
 
 private:
 
