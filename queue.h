@@ -45,6 +45,7 @@ public:
     **********************/
     bool push(int, string&);
     bool pull(Data&);
+    void clear();
 
     /**********************
     * Printing
