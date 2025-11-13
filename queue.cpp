@@ -12,5 +12,29 @@ Queue::Queue(bool fifo) {
 }
 
 Queue::~Queue() {
-    
+
+}
+
+bool Queue::push(int id, string &info) {
+    bool pushed = false;
+
+    if (id > 0 && info != "") {
+        Node* node = new Node;
+        node->data.id = id;
+        node->data.information = info;
+        node->next = NULL;
+        node->prev = NULL;
+
+        if (head == NULL) {
+            head = node;
+            tail = node;
+        } else {
+            node->next = head;
+            head->prev = node;
+            head = node;
+        }
+        pushed = true;
+    }
+
+    return pushed;
 }
