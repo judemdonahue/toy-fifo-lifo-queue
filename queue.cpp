@@ -12,7 +12,7 @@ Queue::Queue(bool fifo) {
 }
 
 Queue::~Queue() {
-    clear();
+    // clear();
 }
 
 bool Queue::push(int id, string &info) {
@@ -37,4 +37,13 @@ bool Queue::push(int id, string &info) {
     }
 
     return pushed;
+}
+
+void Queue::printQueue() {
+    Node* current = head;
+
+    while(current) {
+        std::cout << current->data.id << " : " << current->data.information << std::endl;
+        current = current->next;
+    }
 }
