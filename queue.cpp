@@ -12,7 +12,7 @@ Queue::Queue(bool fifo) {
 }
 
 Queue::~Queue() {
-    // clear();
+    clear();
 }
 
 int Queue::peek() {
@@ -58,7 +58,7 @@ bool Queue::exists(int id) {
 }
 
 int Queue::find(int id) {
-    Node* current = nullptr;
+    Node* current = head;
     int position = -1;
     int index = 0;
 
