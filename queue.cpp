@@ -12,7 +12,7 @@ Queue::Queue(bool fifo) {
 }
 
 Queue::~Queue() {
-
+    clear();
 }
 
 bool Queue::push(int id, string &info) {
