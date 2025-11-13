@@ -39,6 +39,38 @@ bool Queue::push(int id, string &info) {
     return pushed;
 }
 
+bool Queue::pull(Data &handler) {
+    Node* target = nullptr;
+
+    if (head == NULL) {
+        handler.id = -1;
+        handler.information = "";
+    } else {
+        if (isFifo) {
+            target = tail;
+        } else {
+            target = head;
+        }
+
+        handler.id = target->data.id;
+        handler.information = target->data.information;
+
+        if (target->prev != NULL)
+            target->prev->next = target->next;
+        else
+            head = target->next;  // target was head
+
+        if (target->next != NULL)
+            target->next->prev = target->prev;
+        else
+            tail = target->prev;  // target was tail
+
+        delete target;
+    }
+
+    return (handler.id != -1);
+}
+
 void Queue::printQueue() {
     Node* current = head;
 
