@@ -18,6 +18,16 @@ Queue::~Queue() {
 int Queue::peek() {
     int outVal = 0;
 
+    if (head == NULL) {
+        outVal = -1;
+    } else {
+        if (isFifo) {
+            outVal = tail->data.id;
+        } else {
+            outVal = head->data.id;
+        }
+    }
+
     return outVal;
 }
 
@@ -38,8 +48,6 @@ int Queue::find(int id) {
 
     return found;
 }
-
-
 
 bool Queue::push(int id, string &info) {
     bool pushed = false;
