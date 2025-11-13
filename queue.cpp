@@ -98,7 +98,15 @@ bool Queue::pull(Data &handler) {
 }
 
 void Queue::clear() {
+    Node* current = head;
 
+    while (current) {
+        Node* temp = current->next;
+        delete current;
+        current = temp;
+    }
+    head = NULL;
+    tail = NULL;
 }
 
 void Queue::printQueue() {
