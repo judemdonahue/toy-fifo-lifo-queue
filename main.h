@@ -13,6 +13,8 @@
 #include <string>       /* string */
 using std::string;
 
+#include "queue.h"
+
 #define MAXSTRSIZE 8
 #define BUFFERSIZE 8
 #define MAXID 100
