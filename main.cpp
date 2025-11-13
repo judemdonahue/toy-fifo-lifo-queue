@@ -63,7 +63,23 @@ int main () {
     }
     std::cout << std::endl;
 
+    bool fifo = true;
+
+    std::cout << "Creating Queue..." << std::endl;
+    Queue queue(fifo);
+
     
+    std::cout << "Printing Queue..." << std::endl;
+    queue.printQueue();
+
+
+    std::cout << "Pushing to Queue..." << std::endl;
+    for (int i = 0; i < testdatasize; i++) {
+        queue.push(ids[i], strs[i]);
+    }
     
+    std::cout << "Printing Queue..." << std::endl;
+    queue.printQueue();
+
     return 0;
 }
