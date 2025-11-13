@@ -82,7 +82,7 @@ int Queue::find(int id) {
 bool Queue::push(int id, string &info) {
     bool pushed = false;
 
-    if (id > 0 && info != "") {
+    if (id > 0 && !exists(id) && info != "") {
         Node* node = new Node;
         node->data.id = id;
         node->data.information = info;
