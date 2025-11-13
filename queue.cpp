@@ -45,6 +45,14 @@ int Queue::count() {
 
 bool Queue::exists(int id) {
     bool exists = false;
+    Node* current = head;
+
+    while (current->data.id != id) {
+        if (current->data.id == id) {
+            exists = true;
+        }
+        current = current->next;
+    }
 
     return exists;
 }
