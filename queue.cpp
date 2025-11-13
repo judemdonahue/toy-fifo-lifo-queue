@@ -58,9 +58,25 @@ bool Queue::exists(int id) {
 }
 
 int Queue::find(int id) {
-    bool found = false;
+    Node* current = nullptr;
+    int position = -1;
+    int index = 0;
 
-    return found;
+    while (current != NULL) {
+        if (current->data.id == id) {
+            if (position == -1) {
+                position = index;
+            }
+        }
+        current = current->next;
+        index++;
+    }
+
+    if (position != -1 && !isFifo) {
+        position = (count() - 1) - position;
+    }
+
+    return position;
 }
 
 bool Queue::push(int id, string &info) {
