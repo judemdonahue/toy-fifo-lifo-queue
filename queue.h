@@ -37,8 +37,7 @@ public:
     int peek();
     int count();
     bool exists(int);
-    bool find(int);
-
+    int find(int);
 
     /**********************
     * Setters/Mutators
