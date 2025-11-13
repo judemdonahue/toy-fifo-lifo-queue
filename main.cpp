@@ -63,23 +63,25 @@ int main () {
     }
     std::cout << std::endl;
 
+
+    std::cout << "Creating FIFO Queue..." << std::endl;
     bool fifo = true;
+    Queue queueFifo(fifo);
+    std::cout << "FIFO Queue created." << std::endl;
 
-    std::cout << "Creating Queue..." << std::endl;
-    Queue queue(fifo);
-
-    
-    std::cout << "Printing Queue..." << std::endl;
-    queue.printQueue();
-
-
-    std::cout << "Pushing to Queue..." << std::endl;
-    for (int i = 0; i < testdatasize; i++) {
-        queue.push(ids[i], strs[i]);
+    /************************************************
+    ******** INITIALIZATION TEST ********************
+    ************************************************/
+    std::cout << "\n<==INITIALIZATION TEST==>" << std::endl;
+    std::cout << "the queue should be empty..." <<  std::endl;
+    queueFifo.printQueue();
+    if (queueFifo.count() == 0) {
+        std::cout << "PASS. hashtable had " << queueFifo.count() << " entries upon creation." << std::endl;
+    } else {
+        std::cout << "FAIL. hashtable was not empty." << std::endl;
     }
-    
-    std::cout << "Printing Queue..." << std::endl;
-    queue.printQueue();
+
+
 
     return 0;
 }
