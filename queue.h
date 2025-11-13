@@ -19,10 +19,17 @@ public:
     /**********************
      * Getters/Accessors
      **********************/
+    bool peek();
+    int count();
+    bool exists();
+    bool find();
+
 
     /**********************
     * Setters/Mutators
     **********************/
+    bool push();
+    bool pull();
 
     /**********************
     * Printing
