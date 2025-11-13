@@ -1,8 +1,10 @@
 /* ******************************************
  * File:   main.cpp
  * Author: Jude Donahue
- * Purpose: The implementation for main() which is
- * a simple test script.
+ * Main driver for testing the Queue ADT.
+ * Executes FIFO and LIFO operations based on 
+ * user input and validates queue behavior 
+ * through interactive menu commands.
  * ******************************************/
 #include "main.h"
 
@@ -36,6 +38,14 @@ void rand_string(std::string *str){
 }
 
 int main () {
+    /* ****************************************
+    program entry point
+
+    @param na : na
+    @return (int) : program exit status
+    @exception na : na
+    @note delegates execution to runProgram()
+    *********************************************/
     //seed the rand function
     srand(time(NULL));
 

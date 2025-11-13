@@ -1,9 +1,10 @@
 /* ******************************************
  * File:   queue.h
  * Author: Jude Donahue
- * 
+ * Header file for the Queue class.
+ * Defines the Node structure and public 
+ * interface for the FIFO/LIFO queue ADT.
  * ******************************************/
-
 #ifndef QUEUE_H
 #define QUEUE_H
 

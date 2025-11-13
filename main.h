@@ -1,8 +1,9 @@
 /* ******************************************
  * File:   main.h
  * Author: Jude Donahue
- * The interface for main() which is a simple
- * test script.
+ * Header file for main driver program.
+ * Declares helper prototypes used for 
+ * testing the Queue ADT in FIFO and LIFO modes.
  * ******************************************/
 #ifndef MAIN_H
 #define MAIN_H
