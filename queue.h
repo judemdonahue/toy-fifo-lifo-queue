@@ -28,23 +28,23 @@ public:
      /**********************
      * Constructors/Destructor
      **********************/
-    Queue();
+    Queue(bool);
     ~Queue();
 
     /**********************
      * Getters/Accessors
      **********************/
-    bool peek();
+    int peek();
     int count();
-    bool exists();
-    bool find();
+    bool exists(int);
+    bool find(int);
 
 
     /**********************
     * Setters/Mutators
     **********************/
-    bool push();
-    bool pull();
+    bool push(int, string&);
+    bool pull(Data&);
 
     /**********************
     * Printing
@@ -61,6 +61,8 @@ private:
     /**********************
     * Attributes
     **********************/
+   Node* head;
+   Node* tail;
 };
 
 #endif /* QUEUE_H */
