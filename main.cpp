@@ -136,8 +136,75 @@ int main () {
     std::cout << "there are " << queueFifo.count() << " entries in the queue." << std::endl;
     std::cout << std::endl;
 
+    /************************************************
+    ******** SINGLE ENTRY FIFO QUEUE TESTING ********************
+    ************************************************/
+    std::cout << "\n<==SINGLE ENTRY FIFO QUEUE TESTING==>" << std::endl;
 
+    std::cout << "Pushing 1 entry (" << ids[testdatasize-2] << " : " << strs[testdatasize-2] << ") to the queue." << std::endl;
+    queueFifo.push(ids[testdatasize-2], strs[testdatasize-2]);
 
+    std::cout << "the queue should have only 1 entry..." <<  std::endl;
+    if (queueFifo.count() == 1) {
+        std::cout << "PASS. queue had " << queueFifo.count() << " entry." << std::endl;
+    } else {
+        std::cout << "FAIL. queue was more or less than 1 entry." << std::endl;
+    }
+    queueFifo.printQueue();
+    std::cout << std::endl;
+
+    std::cout << "attempting to peek from empty queue (FIFO)..." << std::endl;
+    if (queueFifo.peek() == -1) {
+        std::cout << "FAIL. peek() returned: " << queueFifo.peek() << " (unexpected)." << std::endl;
+    } else {
+        std::cout << "PASS. peeked: " << queueFifo.peek() << " (expected)." << std::endl;
+    }
+    std::cout << std::endl;
+
+    std::cout << "attempting to see if " << ids[testdatasize-2] << " exists in queue (FIFO)..." << std::endl;
+    if (queueFifo.exists(ids[testdatasize-2])) {
+        std::cout << "PASS. " << ids[testdatasize-2] << " exists in the queue (expected)." << std::endl;
+    } else {
+        std::cout << "FAIL. something went wrong (unexpected)." << std::endl;
+    }
+    std::cout << std::endl;
+
+    std::cout << "attempting to find: " << ids[testdatasize-2] << "'s position in the queue (FIFO)..." << std::endl;
+    if (queueFifo.find(ids[testdatasize-2]) == 0) {
+        std::cout << "PASS. find() found entry position at: " << queueFifo.find(ids[testdatasize-2]) << " (expected)." << std::endl;
+    } else {
+        std::cout << "FAIL. something went wrong (unexpected)." << std::endl;
+    }
+    std::cout << std::endl;
+
+    std::cout << "attempting to pull from single entry queue (FIFO)..." << std::endl;
+    if (queueFifo.pull(test)) {
+        std::cout << "PASS. pulled " << test.id << " : " << test.information << " (expected)." << std::endl;
+    } else {
+        std::cout << "FAIL. something went wrong (unexpected)." << std::endl;
+    }
+    std::cout << std::endl;
+
+    std::cout << "there are " << queueFifo.count() << " entries in the queue." << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "Pushing 1 entry (" << ids[0] << " : " << strs[0] << ") to the queue." << std::endl;
+    queueFifo.push(ids[0], strs[0]);
+    std::cout << std::endl;
+
+    std::cout << "(SHOULD CONTAIN 1 DUPLICATE) attempting to push the rest of the test data into single entry queue (FIFO)..." << std::endl;
+    for (int i = 0; i < testdatasize - 1; i++) {
+        queueFifo.push(ids[i], strs[i]);
+    }
+    std::cout << std::endl;
+
+    queueFifo.printQueue();
+
+    std::cout << "Clearing Queue..." << std::endl;
+    queueFifo.clear();
+    std::cout << "there are " << queueFifo.count() << " entries in the queue." << std::endl;
+    std::cout << std::endl;
+    
     
 
 
